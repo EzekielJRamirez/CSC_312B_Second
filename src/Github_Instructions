@@ -1,0 +1,29 @@
+NOTE this is actually for CSC 312B Algorithms Spring 2022
+with Prof Sanders
+
+git add --all
+git commit -m “Adding all files”
+git push
+
+HOW TO CLONE
+* command to clone from specific branch in terminal
+* into current project
+* git clone -b branchName url newFolderName
+
+1. click "new project from version control" in intelliJ
+2. paste link into html box
+3. doesn't need to use git command
+
+git remote -v
+! checks the origin of a project
+
+git remote add upstream [url]
+! adds reference to source of forked project
+
+git fetch upstream
+git checkout master
+
+git merge upstream/master
+
+git status
+git diff
