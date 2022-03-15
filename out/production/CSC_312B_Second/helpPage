@@ -1,0 +1,126 @@
+This page is to give more information on each assignment
+
+generate random numbers from 0 to max
+        Random r = new Random();
+        int val = r.nextInt(max);
+
+rounding, ceiling and floor
+    __   __
+    |     | ceiling rounding rounds up a value to next whole unit
+
+    |__ __| floor rounds number down to previous whole unit
+
+shortcut commands
+shift + ctrl + f10  --> play main method in the program
+shift + f10         --> play the whole page including every class of the program
+                        you are looking at. also plays main method too
+ctrl + alt + l      --> cleans the code to look nice
+alt + f12           --> open terminal
+
+Approved Libraries
+/**
+ * 1. java.lang.System
+ * 2. java.lang.InterruptedException
+ * 3. java.util.ArrayList
+ * 4. java.util.concurrentTimeUnit
+ * 5. java.util.PriorityQueue
+ * 6. java.util.Random
+ * 7. java.util.Vector
+ * 8. javafx.util.Pair
+ */
+
+Complexities
+1. Constant: O(1)
+    TIME:compute answer with closed form equation.
+    SPACE:you have a set of variables, all declared at the start of program
+        ready to store values and be used in calculations
+
+2. Logarithmic: O(log(n))
+    TIME:at each step, check only half of remaining data
+    SPACE:you only need to store a subset of data. You capture this data
+        in progressively halved quantities
+
+3. Linear: O(n)
+    TIME:a loop that is only one level deep
+    SPACE:you have a data structure that stores all your inputs to the program
+
+4. Greater than Linear, less than polynomial: O(n * log(n))
+    TIME:recursively divide all data in half until it's completely separated,
+        then combine it all back together, element by element
+    SPACE:you have the need to store the entire set of data, replicated in
+        halved quantities at each step, all at one time. You cannot delete the
+        data between steps.
+
+5. Polynomial: O(n^c)
+    TIME:there exist c-nested loops
+    SPACE:you have the need to compose the data into a data structure using
+        c loops, nested together
+
+6. Exponential: O(c^n)
+    TIME:enumerate all possible outcomes, and search for the correct answer
+    SPACE:you must maintain a data structure of all the possible outcomes
+        given a set of (n) input data points
+
+7. Factorial: O(n!)
+    TIME:shuffle a deck of cards, then check to see if it is sorted. Repeat
+        until sorted. This will finish in factorial time with respect to the
+        number of cards you have in your deck
+    SPACE:you desire to store every single instance of randomly shuffling a
+        deck until a sorted configuration is found
+
+ICA NOTES
+9. Had help from CS
+
+14. junk code
+//    public static void newInsertSort(LinkedList<Integer> input, node headRef) {
+//        // sort a linked list
+//        // Initialize sorted linked list
+//        sorted = null;
+//        node current = headref;
+//
+//        // Traverse the given linked list and insert every
+//        // node to sorted
+//        while (current != null)
+//        {
+//            // Store next for next iteration
+//            node next = current.next;
+//
+//            // insert current in sorted linked list
+//            sortedInsert(current);
+//
+//            // Update current
+//            current = next;
+//        }
+//
+//        // Update head_ref to point to sorted linked list
+//        head = sorted;
+//    }
+
+    public static void newbucketSort(Vector<Integer> input) {
+        Vector<Vector<Integer>> buck = new Vector<>();
+        Vector<LinkedList<Integer>> tuck = new Vector<>();
+        // input size should be 9 for int and 25 for alphabet
+        Integer n = 10;
+//        System.out.println("input size: " + input.size());
+
+        for (int i = 0; i < n; i++) {
+            //make B[i] an empty list or an empty vector
+            tuck.addElement(new LinkedList<Integer>());
+        }
+        for (int i = 0; i < input.size(); i++) {
+            //insert A[i] into list B[n * A[i]] with floor round
+            // dividing by 100 makes numbers any 2 digit number less than 1     78 --> .78
+//            Integer temp = n * input.elementAt(i) / 100;
+            tuck.elementAt((n * input.elementAt(i) / 100)).add(input.elementAt(i));
+//            System.out.println(buck);
+        }
+        for (int i = 0; i < n; i++) {
+//            newInsertSort(tuck.elementAt(i), null);
+        }
+        for(int i = 0; i < tuck.size(); i++) {
+            System.out.println(tuck.elementAt(i));
+        }
+        for (int i = 0; i < input.size(); i++) {
+            // concatenate
+        }
+    }
