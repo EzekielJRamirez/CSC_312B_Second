@@ -19,6 +19,19 @@ public class ICA_18Redux {
         return ret;
     }
 
+    public static void squareMM_Helper(int initI, int conditionI, int initJ, int conditionJ,
+                                       Vector<Vector<Double>> input,
+                                       Vector<Vector<Double>> sub) {
+        for (int i = initI; i < conditionI; i++) {
+            // fill in a sec
+            Vector<Double> tempRow = new Vector<>();
+            for (int j = initJ; j < conditionJ; j++) {
+                tempRow.addElement(input.elementAt(i).elementAt(j));
+            }
+            sub.addElement(tempRow);
+        }
+    }
+
     public static Vector<Vector<Double>> squareMatrixMultiplyRecursive(
             Vector<Vector<Double>> inputA,
             Vector<Vector<Double>> inputB) {
@@ -45,6 +58,7 @@ public class ICA_18Redux {
             Vector<Vector<Double>> A22 = new Vector<Vector<Double>>();
 
             //special--> works try to reduce lines used and make easier to read!!
+            // NOTE with this method you only init the last value stated not all values in the line!!
 //            Vector<Vector<Double>> A33, A34, A35 = new Vector<>();
 
             Vector<Vector<Double>> B11 = new Vector<Vector<Double>>();
@@ -52,77 +66,24 @@ public class ICA_18Redux {
             Vector<Vector<Double>> B21 = new Vector<Vector<Double>>();
             Vector<Vector<Double>> B22 = new Vector<Vector<Double>>();
 
-            Vector<Vector<Double>> C11 = new Vector<Vector<Double>>();
-            Vector<Vector<Double>> C12 = new Vector<Vector<Double>>();
-            Vector<Vector<Double>> C21 = new Vector<Vector<Double>>();
-            Vector<Vector<Double>> C22 = new Vector<Vector<Double>>();
+            Vector<Vector<Double>> C11, C12, C21, C22;
 
 
-            for (int i = 0; i < n / 2; i++) {
-                // fill in a sec
-                Vector<Double> tempRow = new Vector<>();
-                for (int j = 0; j < n / 2; j++) {
-                    tempRow.addElement(inputA.elementAt(i).elementAt(j));
-                }
-                A11.addElement(tempRow);
-            }
+            squareMM_Helper(0, n / 2, 0, n / 2, inputA, A11);
 
-            for (int i = 0; i < n / 2; i++) {
-                // fill in a sec
-                Vector<Double> tempRow = new Vector<>();
-                for (int j = n / 2; j < n; j++) {
-                    tempRow.addElement(inputA.elementAt(i).elementAt(j));
-                }
-                A12.addElement(tempRow);
-            }
+            squareMM_Helper(0, n / 2, n/2, n, inputA, A12);
 
-            for (int i = n / 2; i < n; i++) {
-                Vector<Double> tempRow = new Vector<>();
-                for (int j = 0; j < n / 2; j++) {
-                    tempRow.addElement(inputA.elementAt(i).elementAt(j));
-                }
-                A21.addElement(tempRow);
-            }
+            squareMM_Helper(n/2, n, 0, n/2, inputA, A21);
 
-            for (int i = n / 2; i < n; i++) {
-                Vector<Double> tempRow = new Vector<>();
-                for (int j = n / 2; j < n; j++) {
-                    tempRow.addElement(inputA.elementAt(i).elementAt(j));
-                }
-                A22.addElement(tempRow);
-            }
+            squareMM_Helper(n/2, n, n/2, n, inputA, A22);
 
-            for (int i = 0; i < n / 2; i++) {
-                Vector<Double> tempRow = new Vector<>();
-                for (int j = 0; j < n / 2; j++) {
-                    tempRow.addElement(inputB.elementAt(i).elementAt(j));
-                }
-                B11.addElement(tempRow);
-            }
+            squareMM_Helper(0, n / 2, 0, n / 2, inputB, B11);
 
-            for (int i = 0; i < n / 2; i++) {
-                Vector<Double> tempRow = new Vector<>();
-                for (int j = n / 2; j < n; j++) {
-                    tempRow.addElement(inputB.elementAt(i).elementAt(j));
-                }
-                B12.addElement(tempRow);
-            }
+            squareMM_Helper(0, n / 2, n/2, n, inputB, B12);
 
-            for (int i = n / 2; i < n; i++) {
-                Vector<Double> tempRow = new Vector<>();
-                for (int j = 0; j < n / 2; j++) {
-                    tempRow.addElement(inputB.elementAt(i).elementAt(j));
-                }
-                B21.addElement(tempRow);
-            }
+            squareMM_Helper(n/2, n, 0, n/2, inputB, B21);
 
-            for (int i = n / 2; i < n; i++) {
-                Vector<Double> tempRow = new Vector<>();
-                for (int j = n / 2; j < n; j++) {
-                    tempRow.addElement(inputB.elementAt(i).elementAt(j));
-                }
-                B22.addElement(tempRow);
-            }
+            squareMM_Helper(n/2, n, n/2, n, inputB, B22);
 
             C11 = matrixAdd(squareMatrixMultiplyRecursive(A11, B11), squareMatrixMultiplyRecursive(A12, B21));
             C12 = matrixAdd(squareMatrixMultiplyRecursive(A11, B12), squareMatrixMultiplyRecursive(A12, B22));
@@ -199,7 +160,7 @@ public class ICA_18Redux {
         System.out.println();
         myDataC = squareMatrixMultiplyRecursive(myDataA,myDataB);
         System.out.println(myDataC);
-//        System.out.println("C-rows: " + myDataC.size() + "\nC-cols: "
-//                + myDataC.elementAt(0).size());
+        System.out.println("C-rows: " + myDataC.size() + "\nC-cols: "
+                + myDataC.elementAt(0).size());
     }
 }
