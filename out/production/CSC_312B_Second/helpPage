@@ -69,8 +69,14 @@ Complexities
         deck until a sorted configuration is found
 
 ICA NOTES
-16. https://www.youtube.com/watch?v=OSelhO6Qnlc
-    https://www.geeksforgeeks.org/implementing-strassens-algorithm-in-java/
-    https://shivathudi.github.io/jekyll/update/2017/06/15/matr-mult.html#:~:text=A%20recursive%2C%20divide-and-conquer%
-        20algorithm%20is%20then%3A%20For%20multiplying,x%20n%2F2%20matrices%2C%20which%20are%20then%20added%20together.
+16. these are links for optimization help
+        https://www.youtube.com/watch?v=OSelhO6Qnlc
+        https://www.geeksforgeeks.org/implementing-strassens-algorithm-in-java/
+        https://shivathudi.github.io/jekyll/update/2017/06/15/matr-mult.html#:~:text=A%20recursive%2C%20divide-and-conquer%
+            20algorithm%20is%20then%3A%20For%20multiplying,x%20n%2F2%20matrices%2C%20which%20are%20then%20added%20together.
+
+    these next links are actual implementations in java
+        https://www.sanfoundry.com/java-program-strassen-algorithm/
+        https://gist.github.com/sid24rane/bdd8f579979fd79f98d7bb481ce79892
+
 17. https://matrix.reshish.com/multCalculation.php
