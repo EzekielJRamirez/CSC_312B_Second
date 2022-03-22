@@ -67,19 +67,13 @@ public class ICA_18Redux {
             Vector<Vector<Double>> C11, C12, C21, C22;
 
             squareMM_Helper(0, n / 2, 0, n / 2, inputA, A11);
-
             squareMM_Helper(0, n / 2, n / 2, n, inputA, A12);
-
             squareMM_Helper(n / 2, n, 0, n / 2, inputA, A21);
-
             squareMM_Helper(n / 2, n, n / 2, n, inputA, A22);
 
             squareMM_Helper(0, n / 2, 0, n / 2, inputB, B11);
-
             squareMM_Helper(0, n / 2, n / 2, n, inputB, B12);
-
             squareMM_Helper(n / 2, n, 0, n / 2, inputB, B21);
-
             squareMM_Helper(n / 2, n, n / 2, n, inputB, B22);
 
             C11 = matrixAdd(squareMatrixMultiplyRecursive(A11, B11), squareMatrixMultiplyRecursive(A12, B21));
