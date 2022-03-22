@@ -1,6 +1,6 @@
 import java.util.Vector;
 
-public class ICA_18 {
+public class ICA_18Redux {
     public static Vector<Vector<Double>> matrixAdd(Vector <Vector<Double>> inputA,
                                                    Vector<Vector<Double>> inputB) {
         //add notes here
