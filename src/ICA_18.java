@@ -1,9 +1,8 @@
 import java.util.Vector;
 
 public class ICA_18 {
-    public static Vector<Vector<Double>> matrixAdd(Vector <Vector<Double>> inputA,
+    public static Vector<Vector<Double>> matrixAdd(Vector<Vector<Double>> inputA,
                                                    Vector<Vector<Double>> inputB) {
-        //add notes here
         Vector<Vector<Double>> ret = new Vector<>();
 
         int n = inputA.size();
@@ -23,7 +22,6 @@ public class ICA_18 {
             Vector<Vector<Double>> inputA,
             Vector<Vector<Double>> inputB) {
 
-        // start here
         Integer n = inputA.size();
         Vector<Vector<Double>> ret = new Vector<Vector<Double>>();
 
@@ -44,19 +42,12 @@ public class ICA_18 {
             Vector<Vector<Double>> A21 = new Vector<Vector<Double>>();
             Vector<Vector<Double>> A22 = new Vector<Vector<Double>>();
 
-            //special--> works try to reduce lines used and make easier to read!!
-//            Vector<Vector<Double>> A33, A34, A35 = new Vector<>();
-
             Vector<Vector<Double>> B11 = new Vector<Vector<Double>>();
             Vector<Vector<Double>> B12 = new Vector<Vector<Double>>();
             Vector<Vector<Double>> B21 = new Vector<Vector<Double>>();
             Vector<Vector<Double>> B22 = new Vector<Vector<Double>>();
 
-            Vector<Vector<Double>> C11 = new Vector<Vector<Double>>();
-            Vector<Vector<Double>> C12 = new Vector<Vector<Double>>();
-            Vector<Vector<Double>> C21 = new Vector<Vector<Double>>();
-            Vector<Vector<Double>> C22 = new Vector<Vector<Double>>();
-
+            Vector<Vector<Double>> C11, C12, C21, C22;
 
             for (int i = 0; i < n / 2; i++) {
                 // fill in a sec
@@ -143,13 +134,13 @@ public class ICA_18 {
 
             for (int i = n / 2; i < n; i++) {
                 for (int j = 0; j < n / 2; j++) {
-                    ret.elementAt(i).set(j, C21.elementAt(i - (n/ 2)).elementAt(j));
+                    ret.elementAt(i).set(j, C21.elementAt(i - (n / 2)).elementAt(j));
                 }
             }
 
             for (int i = n / 2; i < n; i++) {
                 for (int j = n / 2; j < n; j++) {
-                    ret.elementAt(i).set(j, C22.elementAt(i - (n /2)).elementAt(j - (n / 2)));
+                    ret.elementAt(i).set(j, C22.elementAt(i - (n / 2)).elementAt(j - (n / 2)));
                 }
             }
         }
@@ -182,24 +173,12 @@ public class ICA_18 {
             myDataB.addElement(tempRow);
         }
 
-//        System.out.println(myDataA + "\nA size: " + myDataA.size());
-//        System.out.println();
-//        System.out.println(myDataB + "\nB size: " + myDataB.size());
-//        System.out.println();
-//        myDataC = squareMatrixMultiplyRecursive(myDataA, myDataB);
-//        System.out.println(myDataC + "\nC size: " + myDataC.size());
-
-        System.out.println(myDataA);
-        System.out.println("A-rows: " + myDataA.size() + "\nA-cols: "
-                + myDataA.elementAt(0).size());
-        System.out.println();
-        System.out.println(myDataB);
-        System.out.println("B-rows: " + myDataB.size() + "\nB-cols: "
-                + myDataB.elementAt(0).size());
-        System.out.println();
-        myDataC = squareMatrixMultiplyRecursive(myDataA,myDataB);
-        System.out.println(myDataC);
-//        System.out.println("C-rows: " + myDataC.size() + "\nC-cols: "
-//                + myDataC.elementAt(0).size());
+        System.out.println(myDataA + "\n" + "A-rows: " + myDataA.size() + "\nA-cols: "
+                + myDataA.elementAt(0).size() + "\n");
+        System.out.println(myDataB + "\n" + "B-rows: " + myDataB.size() + "\nB-cols: "
+                + myDataB.elementAt(0).size() + "\n");
+        myDataC = squareMatrixMultiplyRecursive(myDataA, myDataB);
+        System.out.println(myDataC + "\n" + "C-rows: " + myDataC.size() + "\nC-cols: "
+                + myDataC.elementAt(0).size());
     }
 }

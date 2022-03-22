@@ -1,7 +1,7 @@
 import java.util.Vector;
 
 public class ICA_18Redux {
-    public static Vector<Vector<Double>> matrixAdd(Vector <Vector<Double>> inputA,
+    public static Vector<Vector<Double>> matrixAdd(Vector<Vector<Double>> inputA,
                                                    Vector<Vector<Double>> inputB) {
         //add notes here
         Vector<Vector<Double>> ret = new Vector<>();
@@ -23,7 +23,6 @@ public class ICA_18Redux {
                                        Vector<Vector<Double>> input,
                                        Vector<Vector<Double>> sub) {
         for (int i = initI; i < conditionI; i++) {
-            // fill in a sec
             Vector<Double> tempRow = new Vector<>();
             for (int j = initJ; j < conditionJ; j++) {
                 tempRow.addElement(input.elementAt(i).elementAt(j));
@@ -36,7 +35,6 @@ public class ICA_18Redux {
             Vector<Vector<Double>> inputA,
             Vector<Vector<Double>> inputB) {
 
-        // start here
         Integer n = inputA.size();
         Vector<Vector<Double>> ret = new Vector<Vector<Double>>();
 
@@ -68,22 +66,21 @@ public class ICA_18Redux {
 
             Vector<Vector<Double>> C11, C12, C21, C22;
 
-
             squareMM_Helper(0, n / 2, 0, n / 2, inputA, A11);
 
-            squareMM_Helper(0, n / 2, n/2, n, inputA, A12);
+            squareMM_Helper(0, n / 2, n / 2, n, inputA, A12);
 
-            squareMM_Helper(n/2, n, 0, n/2, inputA, A21);
+            squareMM_Helper(n / 2, n, 0, n / 2, inputA, A21);
 
-            squareMM_Helper(n/2, n, n/2, n, inputA, A22);
+            squareMM_Helper(n / 2, n, n / 2, n, inputA, A22);
 
             squareMM_Helper(0, n / 2, 0, n / 2, inputB, B11);
 
-            squareMM_Helper(0, n / 2, n/2, n, inputB, B12);
+            squareMM_Helper(0, n / 2, n / 2, n, inputB, B12);
 
-            squareMM_Helper(n/2, n, 0, n/2, inputB, B21);
+            squareMM_Helper(n / 2, n, 0, n / 2, inputB, B21);
 
-            squareMM_Helper(n/2, n, n/2, n, inputB, B22);
+            squareMM_Helper(n / 2, n, n / 2, n, inputB, B22);
 
             C11 = matrixAdd(squareMatrixMultiplyRecursive(A11, B11), squareMatrixMultiplyRecursive(A12, B21));
             C12 = matrixAdd(squareMatrixMultiplyRecursive(A11, B12), squareMatrixMultiplyRecursive(A12, B22));
@@ -104,13 +101,13 @@ public class ICA_18Redux {
 
             for (int i = n / 2; i < n; i++) {
                 for (int j = 0; j < n / 2; j++) {
-                    ret.elementAt(i).set(j, C21.elementAt(i - (n/ 2)).elementAt(j));
+                    ret.elementAt(i).set(j, C21.elementAt(i - (n / 2)).elementAt(j));
                 }
             }
 
             for (int i = n / 2; i < n; i++) {
                 for (int j = n / 2; j < n; j++) {
-                    ret.elementAt(i).set(j, C22.elementAt(i - (n /2)).elementAt(j - (n / 2)));
+                    ret.elementAt(i).set(j, C22.elementAt(i - (n / 2)).elementAt(j - (n / 2)));
                 }
             }
         }
@@ -143,24 +140,12 @@ public class ICA_18Redux {
             myDataB.addElement(tempRow);
         }
 
-//        System.out.println(myDataA + "\nA size: " + myDataA.size());
-//        System.out.println();
-//        System.out.println(myDataB + "\nB size: " + myDataB.size());
-//        System.out.println();
-//        myDataC = squareMatrixMultiplyRecursive(myDataA, myDataB);
-//        System.out.println(myDataC + "\nC size: " + myDataC.size());
-
-        System.out.println(myDataA);
-        System.out.println("A-rows: " + myDataA.size() + "\nA-cols: "
-                + myDataA.elementAt(0).size());
-        System.out.println();
-        System.out.println(myDataB);
-        System.out.println("B-rows: " + myDataB.size() + "\nB-cols: "
-                + myDataB.elementAt(0).size());
-        System.out.println();
-        myDataC = squareMatrixMultiplyRecursive(myDataA,myDataB);
-        System.out.println(myDataC);
-        System.out.println("C-rows: " + myDataC.size() + "\nC-cols: "
+        System.out.println(myDataA + "\n" + "A-rows: " + myDataA.size() + "\nA-cols: "
+                + myDataA.elementAt(0).size() + "\n");
+        System.out.println(myDataB + "\n" + "B-rows: " + myDataB.size() + "\nB-cols: "
+                + myDataB.elementAt(0).size() + "\n");
+        myDataC = squareMatrixMultiplyRecursive(myDataA, myDataB);
+        System.out.println(myDataC + "\n" + "C-rows: " + myDataC.size() + "\nC-cols: "
                 + myDataC.elementAt(0).size());
     }
 }
