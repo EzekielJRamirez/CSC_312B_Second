@@ -114,7 +114,7 @@ public class ICA_18Redux {
         Vector<Vector<Double>> myDataB = new Vector<Vector<Double>>();
         Vector<Vector<Double>> myDataC = new Vector<Vector<Double>>();
 
-        Integer n = 16; // must be pow of 2
+        Integer n = 4; // must be pow of 2
 
         for (int i = 0; i < n; i++) {
             Vector<Double> tempRow = new Vector<>();

@@ -113,7 +113,7 @@ public class Midterm {
             p7 = strassensMMRecursive(s9, s10);
 
             // setting values for C matrices
-            C11 = matrixAdd(p5, p6);
+            C11 = matrixAdd(p5, p4);
             C11 = matrixSubtract(C11, p2);
             C11 = matrixAdd(C11, p6);
 
@@ -161,7 +161,7 @@ public class Midterm {
         Vector<Vector<Double>> myDataB = new Vector<Vector<Double>>();
         Vector<Vector<Double>> myDataC = new Vector<Vector<Double>>();
 
-        Integer n = 16; // must be pow of 2
+        Integer n = 8; // must be pow of 2
 
         for (int i = 0; i < n; i++) {
             Vector<Double> tempRow = new Vector<>();
