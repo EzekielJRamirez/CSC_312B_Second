@@ -161,7 +161,7 @@ public class Midterm {
         Vector<Vector<Double>> myDataB = new Vector<Vector<Double>>();
         Vector<Vector<Double>> myDataC = new Vector<Vector<Double>>();
 
-        Integer n = 16; // must be pow of 2
+        Integer n = 8; // must be pow of 2
 
         for (int i = 0; i < n; i++) {
             Vector<Double> tempRow = new Vector<>();
