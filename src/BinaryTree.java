@@ -1,8 +1,23 @@
+import java.util.Vector;
+
+/**
+ * pages 397-403
+ */
+
 public class BinaryTree {
     Node root;
 
     private Node addRecursive(Node current, int value) {
-        return null;
+        // your code here
+        if (current == null) {
+            return new Node(value);
+        }
+        if (value < current.value) {
+            current.left = addRecursive(current.left, value);
+        } else if (value > current.value) {
+            current.right = addRecursive(current.right, value);
+        }
+        return current;
     }
 
     public void add(int value) {
@@ -53,11 +68,40 @@ public class BinaryTree {
     }
 
     private Node deleteRecursive(Node current, int value) {
-        return null;
+        // your code here
+        if (current == null) {
+            return null;
+        }
+        if (value == current.value) {
+            if (current.left == null && current.right == null) {
+                return null;
+            }
+            if (current.right == null) {
+                return current.left;
+            }
+            if (current.left == null) {
+                return current.right;
+            }
+            int s = findSmallestValue(current.right);
+            current.value = s;
+            current.right = deleteRecursive(current.right, s);
+            return current;
+        }
+        if (value < current.value) {
+            current.left = deleteRecursive(current.left, value);
+            return current;
+        }
+        current.right = deleteRecursive(current.right, value);
+        return current;
     }
 
     private int findSmallestValue(Node root) {
-        return 0;
+        // your code here
+        if (root.left == null) {
+            return root.value;
+        } else {
+            return findSmallestValue(root.left);
+        }
     }
 
     public void delete(int value) {
@@ -90,6 +134,22 @@ public class BinaryTree {
 
     public static void traverseLevelOrder(Node root) {
         // your code here...
+        if (root == null) {
+            return;
+        }
+        Vector<Node> a = new Vector<>();
+        a.addElement(root);
+        while (!a.isEmpty()) {
+            Node n = a.elementAt(0);
+            a.remove(0);
+            System.out.println(n.value);
+            if (n.left != null) {
+                a.add(n.left);
+            }
+            if (n.right != null) {
+                a.add(n.right);
+            }
+        }
     }
 
     public static void printTreeBFS(Node root) {
@@ -110,14 +170,18 @@ public class BinaryTree {
 
         traverseInOrder(bt.root);
         System.out.println();
+        System.out.println();
 
         traversePreOrder(bt.root);
+        System.out.println();
         System.out.println();
 
         traversePostOrder(bt.root);
         System.out.println();
+        System.out.println();
 
         traverseLevelOrder(bt.root);
+        System.out.println();
         System.out.println();
 
         printTreeBFS(bt.root);
