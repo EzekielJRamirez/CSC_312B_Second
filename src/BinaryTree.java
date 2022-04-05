@@ -170,20 +170,12 @@ public class BinaryTree {
 
         traverseInOrder(bt.root);
         System.out.println();
-        System.out.println();
-
         traversePreOrder(bt.root);
         System.out.println();
-        System.out.println();
-
         traversePostOrder(bt.root);
         System.out.println();
-        System.out.println();
-
         traverseLevelOrder(bt.root);
         System.out.println();
-        System.out.println();
-
         printTreeBFS(bt.root);
     }
 }
