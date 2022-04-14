@@ -1,3 +1,5 @@
+import java.util.Map;
+import java.util.PriorityQueue;
 import java.util.Vector;
 
 /**
@@ -98,19 +100,34 @@ public class Huffman {
         System.out.println();
     }
 
+    //TODO: make method here that uses map to get frequencies of the string
+    // that is passed into huffman method
+
+    public static void freq() {
+        System.out.println("test");
+    }
+
     public static Node huffman(String input){
         int n = input.length();
         String Q = input;
+//        Vector<Node> que = new Vector<>();
+//        que.elementAt(0).set_freq(input.substring(0,1));
+//        que.set(0, input.substring(0,1));
+//        Node que = new Node();
+//        PriorityQueue<String> data = new PriorityQueue<>();
+
         for(int i = 1; i < n - 1; i++){
             Node z = new Node();
-            int x = heap_extract_min(Q);
-            int y = heap_extract_min(Q);
+//            Node que = new Node();
+//            heap_extract_min(que);
+            Node x = heap_extract_min(Q);
+            Node y = heap_extract_min(Q);
             z.left = x;
             z.right = y;
             z.freq = x.freq + y.freq;
-            min_heap_insert(Q, z);
+            min_heap_insert(Q, z); // return the root of the tree
         }
-        return  heap_extract_min(Q);
+        return heap_extract_min(Q);
     }
 
     public void print_tree(Node input){
