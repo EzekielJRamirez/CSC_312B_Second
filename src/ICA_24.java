@@ -24,12 +24,15 @@ public class ICA_24 {
         }
 //        System.out.println(i + ":\t" + key);
         input.set(i, key);
-        while (i > 1 && input.elementAt(parent(i)) < input.elementAt(i)) {
+//        input.setElementAt(key,i);
+        while (i > 0 && input.elementAt(parent(i)) < input.elementAt(i)) {
             // swap A[i] with A[parent(i)]
             // I may need a temp value
             Integer temp = input.elementAt(i);
-            input.set(i, input.elementAt(parent(i)));
-            input.set(parent(i), temp);
+//            input.set(i, input.elementAt(parent(i)));
+//            input.set(parent(i), temp);
+            input.setElementAt(input.elementAt(parent(i)), i);
+            input.setElementAt(temp, parent(i));
             i = parent(i);
         }
     }
@@ -60,19 +63,30 @@ public class ICA_24 {
         Integer l = left(i);
         Integer r = right(i);
         Integer largest;
-        if (l <= input.size() && input.elementAt(l) > input.elementAt(i)) {
+        if (l <= input.size() - 1 && input.elementAt(l) > input.elementAt(i)) {
             largest = l;
         } else {
             largest = i;
         }
-        if (r <= input.size() && input.elementAt(r) > input.elementAt(largest)) {
+        if (r <= input.size() - 1 && input.elementAt(r) > input.elementAt(i)) {
             largest = r;
         }
+
+//        if (l <= input.size() && input.elementAt(l) > input.elementAt(i)) {
+//            largest = l;
+//        } else {
+//            largest = i;
+//        }
+//        if (r <= input.size() && input.elementAt(r) > input.elementAt(largest)) {
+//            largest = r;
+//        }
         if (largest != i) {
             // swap A[i] with A[largest]
             Integer temp = input.elementAt(i);
-            input.set(i, input.elementAt(largest));
-            input.set(largest, temp);
+//            input.set(i, input.elementAt(largest));
+//            input.set(largest, temp);
+            input.setElementAt(input.elementAt(largest), i);
+            input.setElementAt(temp, largest);
             max_heapify(input, largest);
         }
     }
